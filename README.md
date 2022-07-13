@@ -15,7 +15,9 @@ This repo contains the installation guide and EFI files required to get a perfec
 - **This EFI is Configured with Big Sur in mind. If you are using it on Monterey, Catalina read the the whole guide to know where to make the necessary changes**
 - **With every EFI update you retrieve from here please remember to go through the post install guide**
 <hr>
-! [img](https://img.shields.io/badge/MacOS%20Support-BigSur-red)  ![img](https://img.shields.io/badge/Opencore%20Version-0.8.2-green)
+
+![img](https://img.shields.io/badge/Release%20Update-July-red) ![img](https://img.shields.io/badge/macOS%20Support-BigSur--11.6.7-blue)![img](https://img.shields.io/badge/macOS%20Support-Catalina-blue) ![img](https://img.shields.io/badge/OpenCore%20Version-0.8.2-yellow)
+
 
 # Introduction
 
