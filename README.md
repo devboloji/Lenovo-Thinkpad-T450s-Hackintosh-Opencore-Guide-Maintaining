@@ -77,6 +77,11 @@ Windows Guide:(Works for Macos users also)
 2. Select the desired flash drive or Sdcard you would like to put the installer on under the device option
 3. Select `non-bootable` as the boot selection (REQUIRED)
 4. Select `FAT-32` or `Large FAT-32` as the partition scheme
+- `For mac users`
+1. Launch Disk Utility
+2. `Select View` > `Show all devices` at the top left
+3. Select your flash drive (root usb device)and format it as `MS-DOS (FAT)` or `FAT-32`
+and change `guid patition table`-> `Master Boot Record Partiton`.
 5. Open up the usb partition in file explorer and delete the files created by rufus
 6. Create a folder on that partiton named `com.apple.recovery.boot`
 7. Install Python from Microsoft store or Download manually here -> [python](https://www.python.org/downloads/) (Make sure you select add python x.x to path)
@@ -97,7 +102,7 @@ Windows Guide:(Works for Macos users also)
 19. Now in the OpenCore menu select the name of your USB partiton
 Great! Now install and set up macOS Big Sur as usual(This process will be required 14gb internet to download full Macos bigsur). When you are done be sure to read my post install guide.
 
- # MacOS BigSur Offline Installer from mac:
+ # MacOS BigSur Offline Installer from Windows and Macos:
  
 - 1.Search and Download Olarila BigSur .raw from [Here](https://www.olarila.com/topic/6278-hackintosh-and-macintosh-olarila-vanilla-images-macos/)the latest version of bigsur is 11.6.7
 - 2.Download etcher from [here](https://www.balena.io/etcher/)
@@ -111,3 +116,35 @@ Great! Now install and set up macOS Big Sur as usual(This process will be requir
  - 7.Select your flash drive as temporary boot option
  - 8.Now in the OpenCore menu select the name of your USB partiton
  - install.Enjoy!!!!
+ ## Note: 
+## 1. If you are installing Catalina it is important that you disable Airportitlwm.kext in Kernel/Add/20 of Config.plist and enable itlwm.kext instead. Read Post Install #4.
+## 2. For those having a black screen or frozen installer when booting the install USB, create the USB using macOS and not Linux or Windows. Details on that [here](https://github.com/racka98/Lenovo-Thinkpad-T450-T450s-Hackintosh-Guide-Opencore/issues/2#issuecomment-732408469)
+
+# Post Install
+Once you have verifed that your machine boots properly without any issues as described in the "What Works section", proceed to do the following
+
+### 1. Enable Verbose mode (the black screen with logs on boot up)A real hackintosh Users uses this.
+In Config.plist, navigate to NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82 -> boot-args and give a single space and add the `-v` argument
+
+### 2. Disable ShowPicker
+In the Config.plist, You can disable the boot picker screen so that you boot straight to th Apple logo by setting under `Misc` -> `Boot` -> `ShowPicker` False (NO)
+Note: you can still see the boot picker with ShowPicker set to no/false by spamming Esc before the apple logo is displayed during boot.
+
+### 3. Enable Caps lock indicator and additional Thinkpad features you used to get on Windows
+  Using [YogaSMC](https://github.com/zhen-zen/YogaSMC) you can gain this functionality back. Install the YogaSMC App-Release from [here](https://github.com/zhen-zen/YogaSMC/releases).
+  Install it then open it to set it up.
+  
+ ### 5. Boot faster
+You can Disable IntelBluetoothFirmware.kext & IntelBluetoothInjector.kext to be able to Boot faster those kexts in config.plist
+This is not done by default to bluetooth working.
+***For those on macOS Monterey do not enable these kexts because the system will not boot***
+  
+### 6. Add Device Properties for Serial number, MLB, ROM, Sytem-UUID and optionally SystemProductName.
+Follow this [Opencore guide](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html#generate-a-new-serial) to set up serial number and the accompanying info to get iServices
+
+If you want to get wired sidecar working, in Config.plist change the string in Platforminfo > Generic> SystemProductName to `MacBook9,1` (note: this causes the battery to drain faster)
+
+### 8. Fixing static noise
+When you connect headphones/earbuds via the headphone jack you will hear static noise. To fix this install alc_fix_new located in Utilities folder of this Relese Efi folder.(This may not work 100%)
+Tip: To fix it, plug the headphones and close the lid and open. This may fix the static noise.
+This issue may fix later on Relases.
