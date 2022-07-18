@@ -95,7 +95,8 @@ and change `guid patition table`-> `Master Boot Record Partiton`.
 13. This will put some files in the macrecovery folder but we only need BaseSystem.dmg and BaseSystem.chunklist (takes approx. 600mb to 800mb internet)for Downloading the Macos installer.
 14. Paste both of those files in the `com.apple.recovery.boot` folder in your flash drive partiton
 15. Download the latest EFI created [here](https://github.com/devboloji/Lenovo-Thinkpad-T450-T450s-Hackintosh-Guide-Opencore/releases)
-16. Copy the EFI folder and paste it in your USB partiton
+16. Copy the EFI folder and paste it in your USB partiton.
+- ### Note: IF YOU ARE USING THE CATALINA, THEN YOU NEED TO EDIT ONE THING IN CONFIG ->> open `config.plist`->`Misc`->`Security`-> `SecureBootModel`->TYPE `Disabled`.
 
 `Note: Make sure to apply the correct bios settings before continuing (provided above)`
 
@@ -113,6 +114,7 @@ Great! Now install and set up macOS Big Sur as usual(This process will be requir
 - For mac users use opencoreconfigurator official [here](https://mackie100projects.altervista.org/download-opencore-configurator/)
 - Delete the default EFI folder which is in bootable usb
 - 5.and paste the Efi to USB. Efi [here]((https://github.com/devboloji/Lenovo-Thinkpad-T450-T450s-Hackintosh-Guide-Opencore/releases)
+- ### Note: IF YOU ARE USING THE CATALINA, THEN YOU NEED TO EDIT ONE THING IN CONFIG ->> open `config.plist`->`Misc`->`Security`-> `SecureBootModel`->TYPE `Disabled`.
 
  - 6.Restart your laptop and hit `F12`
  - 7.Select your flash drive as temporary boot option
